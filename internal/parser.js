@@ -9,8 +9,8 @@ var defineNlsRegExp = /(\s*define\s*\(\s*)\(?\{([\s\S]*)\}\)?\s*\)/m;
 
 // Simple comment cutting: // and /* */
 parser.cutComments = function(str){
-    return str.replace(/\/\/.*$/mg, '').  // single-line
-    replace(/\/\*[\s\S]*?\*\//g, '');     // multi-line
+    return str.replace(/(\/\/(?=(?:[^"]*"[^"]*")*[^"]*$).*\n?)/gm, '')
+        .replace(/(\/\*(?=(?:[^"]*"[^"]*")*[^"]*)(.|\n)*\*\/\n?)/gm, '');
 };
 
 // parse dojo AMD-modules and return:
