@@ -103,7 +103,7 @@ parser.parseModule = function(content){
                 // res_str will be: define([...], function(x, y, z <injected>) {
                 res_str += content.substring( define_match.index + define_match[0].length + function_match.index + function_match[0].length, module_def_start + 1);
                 // res_str will be: define([...], function(x, y, z <injected>) { <injected>
-                if (inject && inject.prepend) res_str += inject.prepend;
+                if (inject && inject.prepend) res_str += inject.prepend + ";";
                 // res_str will be: define([...], function(x, y, z <injected>) { <injected> ...
                 res_str += this.moduleBody;
                 // res_str will be: define([...], function(x, y, z <injected>) { <injected> ... <injected>
